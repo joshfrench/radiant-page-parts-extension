@@ -7,6 +7,7 @@ class PagePartsExtension < Radiant::Extension
   
   def activate
     PagePart.send(:include, PageParts::PagePartExtensions)
+    Page.send(:include, PageParts::PageExtensions)
     Dir.glob(File.join(PagePartsExtension.root, %w(app models *.rb))).each { |f| require_dependency f }
   end
   
