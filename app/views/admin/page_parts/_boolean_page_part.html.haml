@@ -1,0 +1,9 @@
+.page{:id => "page-#{page_part.name.to_slug}"}
+  .part{:id => "part-#{page_part.name.to_slug}"}
+    = hidden_field_tag 'page[parts][][name]', page_part.name, :id => "part_#{page_part.name.to_slug}_name"
+    = hidden_field_tag 'page[parts][][page_part_type]', 'BooleanPagePart', :id => "part_#{page_part.name.to_slug}_page_part_type"
+    %p
+      = render_region :part_controls, :locals => {:page_part => page_part}
+    %div
+      / = hidden_field_tag 'page[parts][][content]', false
+      = check_box_tag 'page[parts][][content]', true, page_part.content?, :class => "check_box", :id => "part_#{page_part.name.to_slug}_content"

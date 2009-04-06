@@ -1,23 +1,16 @@
-# Uncomment this if you reference any of your controllers in activate
-# require_dependency 'application'
+require_dependency 'application'
 
 class PagePartsExtension < Radiant::Extension
-  version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/page_parts"
-  
-  # define_routes do |map|
-  #   map.namespace :admin, :member => { :remove => :get } do |admin|
-  #     admin.resources :page_parts
-  #   end
-  # end
+  version "0.1"
+  description "Adds rich content to page parts"
+  url "http://digitalpulp.com"
   
   def activate
-    # admin.tabs.add "Page Parts", "/admin/page_parts", :after => "Layouts", :visibility => [:all]
+    PagePart.send(:include, PageParts::PagePartExtensions)
+    Dir.glob(File.join(PagePartsExtension.root, %w(app models *.rb))).each { |f| require_dependency f }
   end
   
   def deactivate
-    # admin.tabs.remove "Page Parts"
   end
   
 end
