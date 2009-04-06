@@ -9,9 +9,10 @@ module PageParts
       end
 
       class << base
-        # Attributes hash can include :class_name => 'PagePartDescendentName'. Returned object will be of this class.
-        # If passed class is _not_ a PagePart or subclass, returned object will be a normal PagePart. If class name is
-        # not a valid constant, throws an exception.
+        # attributes hash can include :page_part_type => 'PagePartDescendentName'.
+        # Returned object will be an instance of this class. If passed class is
+        # _not_ a PagePart or PagePart descendant, returned object will be a normal
+        # PagePart. If class name is not a valid constant, throws an exception.
         def new(attributes={})
           attributes = HashWithIndifferentAccess.new(attributes)
           if klass_name = attributes.delete(:page_part_type) and (klass = klass_name.constantize) < PagePart
@@ -52,11 +53,7 @@ module PageParts
 
         # Filename of edit partial
         def partial_name
-          if 'PagePart' == name
-            'text_page_part'
-          else
-            name.gsub(' ', '').underscore
-          end
+          'PagePart' == name ? 'text_page_part' : name.gsub(' ', '').underscore
         end
 
       end
