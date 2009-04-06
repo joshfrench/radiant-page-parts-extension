@@ -51,4 +51,38 @@ describe PageParts::PagePartTags do
       @page.should render("<r:if_earlier than='#{last_week}' part='date'>content</r:if_earlier>").as('content')
     end
   end
+  
+  describe "if_greater" do
+    before do
+      @int = IntegerPagePart.new(:name => 'int', :content => 5)
+      @page.parts << @int
+    end
+
+    it "should expand if content is greater than given attribute" do
+      @page.should render('<r:if_greater than="1" part="int">content</r:if_greater>').as('content')
+    end
+
+    it "should not expand if content is less than given attribute" do
+      @page.should render('<r:if_greater than="10" part="int">content</r:if_greater>').as('')
+    end
+    
+    it "should take OrEqual option" do
+      @page.should render('<r:if_greater than="5" orequal="true" part="int">content</r:if_greater>').as('content')
+    end
+  end
+  
+  describe "if_equal" do
+    before do
+      @int = IntegerPagePart.new(:name => 'int', :content => 5)
+      @page.parts << @int
+    end
+
+    it "should expand if attribute is equal" do
+       @page.should render('<r:if_equal to="5" part="int">content</r:if_equal>').as('content')
+    end
+
+    it "should not expand if attribute is not equal" do
+      @page.should render('<r:if_equal to="10" part="int">content</r:if_equal>').as('')
+    end
+  end
 end

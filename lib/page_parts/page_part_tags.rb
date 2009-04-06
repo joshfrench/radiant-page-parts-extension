@@ -64,6 +64,64 @@ module PageParts
       raise StandardTags::TagError.new("`#{tag.attr['part']}' is not a DatetimePagePart") unless part.is_a?(DatetimePagePart)
       tag.expand if part.content > comparison
     end
+    
+    desc %{
+      Given the name of an integer page part, compares it to the required @than@ attribute. The tag
+      expands if the content is greater than the compared value. An optional @orequal@ attribute may
+      be passed to do a greater-or-equal comparison. @orequal@ defaults to false.
+        
+      *Usage:*
+      <pre><code><r:if_greater than="100" [orequal="true|false"] part="integer part name">...</r:if_greater></code></pre>
+    }
+    tag 'if_greater' do |tag|
+      page = tag.locals.page
+      part = page.part(tag.attr['part'])
+      orequal = (tag.attr['orequal'].to_s =~ /true/i)
+      raise StandardTags::TagError.new("`if_greater' requires a `than' attribute") unless tag.attr['than']
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not an IntegerPagePart") unless part.is_a?(IntegerPagePart)
+      if orequal
+        tag.expand if part.content >= tag.attr['than'].to_i
+      else
+        tag.expand if part.content > tag.attr['than'].to_i
+      end
+    end
+    
+    desc %{
+      Given the name of an integer page part, compares it to the required @than@ attribute. The tag
+      expands if the content is less than the compared value. An optional @orequal@ attribute may be
+      passed to do a less-than-or-equal comparison. @orequal@ defaults to false.
+        
+      *Usage:*
+      <pre><code><r:if_less than="100" [orequal="true|false"] part="integer part name">...</r:if_less></code></pre>
+    }
+    tag 'if_less' do |tag|
+      page = tag.locals.page
+      part = page.part(tag.attr['part'])
+      orequal = (tag.attr[:orequal].to_s =~ /true/i)
+      raise StandardTags::TagError.new("`if_less' requires a `than' attribute") unless tag.attr['than']
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not an IntegerPagePart") unless part.is_a?(IntegerPagePart)
+      if orequal
+        tag.expand if part.content <= tag.attr['than'].to_i
+      else
+        tag.expand if part.content < tag.attr['than'].to_i
+      end
+    end
+    
+    tag 'if_equal' do |tag|
+      page = tag.locals.page
+      part = page.part(tag.attr['part'])
+      raise StandardTags::TagError.new("`if_equal' requires a `to' attribute") unless tag.attr['to']
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not an IntegerPagePart") unless part.is_a?(IntegerPagePart)
+      tag.expand if part.content == tag.attr['to'].to_i
+    end
+    
+    tag 'unless_equal' do |tag|
+      page = tag.locals.page
+      part = page.part(tag.attr['part'])
+      raise StandardTags::TagError.new("`unless_equal' requires a `to' attribute") unless tag.attr['to']
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not an IntegerPagePart") unless part.is_a?(IntegerPagePart)
+      tag.expand unless part.content == tag.attr['to'].to_i
+    end
 
   end
 end
