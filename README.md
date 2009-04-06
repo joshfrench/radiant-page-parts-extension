@@ -12,7 +12,7 @@ specify what type. Content will be stored as a native representation
 (DatetimePagePart in a datetime column, &c.), allowing for advanced operations
 at the DB level. Further subclasses with custom behavior can be added easily.
 
-## Tags
+### Tags
 
 New Radius tags are included for working with enhanced parts. Full references
 are available in the editing screen, but these additional tags are available:
