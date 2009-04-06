@@ -19,7 +19,7 @@ screen. See the partials shipped with this extension for examples.
 
 There are two methods you should be aware of when creating new subclasses:
 
-#### `content`
+#### content
 
 This class method specifies the storage to use for this class. Options are
 `:text`, `:integer`, `:boolean`, and `:datetime`. The default is `:text`.
@@ -28,7 +28,7 @@ This class method specifies the storage to use for this class. Options are
       content :integer
     end
   
-#### `content_for_render`
+#### content_for_render
  
 By default, all PagePart subclasses simply return `content.to_s` when asked to
 render. Override this method to return something else.
