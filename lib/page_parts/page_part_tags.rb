@@ -107,6 +107,12 @@ module PageParts
       end
     end
     
+    desc %{
+      Given the name of an integer part, expands if the content is equal to the required @to@ attribute.
+
+      *Usage:*
+      <pre><code><r:if_equal to="100" part="integer part name">...</r:if_equal></code></pre>
+    }
     tag 'if_equal' do |tag|
       page = tag.locals.page
       part = page.part(tag.attr['part'])
@@ -115,6 +121,12 @@ module PageParts
       tag.expand if part.content == tag.attr['to'].to_i
     end
     
+    desc %{
+      Given the name of an integer part, expands unless the content is equal to the required @to@ attribute.
+
+      *Usage:*
+      <pre><code><r:unless_equal to="100" part="integer part name">...</r:unless_equal></code></pre>
+    }
     tag 'unless_equal' do |tag|
       page = tag.locals.page
       part = page.part(tag.attr['part'])
