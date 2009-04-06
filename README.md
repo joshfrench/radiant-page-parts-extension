@@ -10,7 +10,21 @@ PagePart subclasses.
 Install and run migrations. Now when adding a page part, you will be able to
 specify what type. Content will be stored as a native representation
 (DatetimePagePart in a datetime column, &c.), allowing for advanced operations
-at the DB level. Further subclasses with custom behavior can be added easily. 
+at the DB level. Further subclasses with custom behavior can be added easily.
+
+## Tags
+
+New Radius tags are included for working with enhanced parts. Full references
+are available in the editing screen, but these additional tags are available:
+
+ * `if_bool`
+ * `unless_bool`
+ * `if_earlier`
+ * `if_later`
+ * `if_greater`
+ * `if_less`
+ * `if_equal`
+ * `unless_equal`
 
 ### Creating New Subclasses
 
@@ -41,6 +55,5 @@ render. Override this method to return something else.
 
 ## TODO
 
- * Type-aware Radius tags
  * Indexes on additional content columns
  * Calendar picker JS
