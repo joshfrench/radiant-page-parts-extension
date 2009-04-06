@@ -29,4 +29,26 @@ describe PageParts::PagePartTags do
       }.should raise_error(StandardTags::TagError)
     end
   end
+  
+  describe "if_earlier" do
+    before do
+      @date = DatetimePagePart.new(:name => 'date', :content => Time.now - 1.hour)
+      @page.parts << @date
+    end
+
+    it "should expand if content is earlier than now" do
+      @page.should render('<r:if_earlier part="date">content</r:if_earlier>').as('content')
+    end
+
+    it "should not expand if content is later than now" do
+      @date.content = Time.now + 1.hour
+      @page.should render('<r:if_earlier part="date">content</r:if_earlier>').as('')
+    end
+
+    it "should accept an explicit time for comparison" do
+      @date.content = 2.weeks.ago
+      last_week = 1.week.ago.to_s
+      @page.should render("<r:if_earlier than='#{last_week}' part='date'>content</r:if_earlier>").as('content')
+    end
+  end
 end
