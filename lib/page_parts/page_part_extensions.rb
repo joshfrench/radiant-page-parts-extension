@@ -30,6 +30,7 @@ module PageParts
           self.content_column = "#{type}_content"
           alias_attribute :content, self.content_column
         end
+        alias_method :content=, :content
         
         # For pretty listings
         def display_name
