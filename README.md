@@ -52,7 +52,3 @@ render. Override this method to return something else.
         content.reverse
       end
     end
-
-## TODO
-
- * Calendar picker JS

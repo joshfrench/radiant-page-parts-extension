@@ -10,6 +10,7 @@ class PagePartsExtension < Radiant::Extension
     Page.send(:include, PageParts::PageExtensions, PageParts::PagePartTags)
     Admin::PagesController.send(:include, PageParts::Admin::PagesControllerExtensions)
     Dir.glob(File.join(PagePartsExtension.root, %w(app models *.rb))).each { |f| require_dependency f }
+    require 'page_parts/standard_tags'
   end
   
   def deactivate

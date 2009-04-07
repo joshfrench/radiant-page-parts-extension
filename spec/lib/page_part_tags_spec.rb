@@ -85,4 +85,15 @@ describe PageParts::PagePartTags do
       @page.should render('<r:if_equal to="10" part="int">content</r:if_equal>').as('')
     end
   end
+  
+  describe "date" do
+    before do
+      @date = DatetimePagePart.new(:name => 'millenium', :content => '1/1/2000')
+      @page.parts << @date
+    end
+
+    it "should accept a page part" do
+      @page.should render('<r:date for="millenium" />').as('Saturday, January 01, 2000')
+    end
+  end
 end
