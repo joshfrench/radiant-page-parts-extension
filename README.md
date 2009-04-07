@@ -55,5 +55,4 @@ render. Override this method to return something else.
 
 ## TODO
 
- * Indexes on additional content columns
  * Calendar picker JS
