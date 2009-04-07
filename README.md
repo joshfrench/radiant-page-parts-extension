@@ -25,6 +25,11 @@ are available in the editing screen, but these additional tags are available:
  * `if_less`
  * `if_equal`
  * `unless_equal`
+ 
+The standard `date` tag is also extended to accept the name of any datetime 
+page part and use that part's content as its value.
+
+`<r:date for="datetime page part name" [format="%A, %B %d, %Y"] />`
 
 ### Creating New Subclasses
 
