@@ -34,7 +34,7 @@ module PageParts
     desc %{
       Given the name of a datetime page part, expands if that part's value is earlier 
       than @Time.now@. Accepts an optional @than@ parameter if you need to compare the
-      value to something other than @Time.now@.
+      value to something other than @Time.now@. @than@ can be any string parseable by DateTime.
       
       *Usage:*
       
@@ -51,7 +51,7 @@ module PageParts
     desc %{
       Given the name of a datetime page part, expands if that part's value is later 
       than @Time.now@. Accepts an optional @than@ parameter if you need to compare the
-      value to something other than @Time.now@.
+      value to something other than @Time.now@. @than@ can be any string parseable by DateTime.
       
       *Usage:*
       
