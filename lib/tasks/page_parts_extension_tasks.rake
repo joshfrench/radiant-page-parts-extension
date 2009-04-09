@@ -19,8 +19,8 @@ namespace :radiant do
         Dir[PagePartsExtension.root + "/public/**/*"].reject(&is_svn_or_dir).each do |file|
           path = file.sub(PagePartsExtension.root, '')
           directory = File.dirname(path)
-          mkdir_p RAILS_ROOT + directory
-          cp file, RAILS_ROOT + path
+          FileUtils.mkdir_p RAILS_ROOT + directory
+          FileUtils.cp file, RAILS_ROOT + path
         end
       end  
     end
