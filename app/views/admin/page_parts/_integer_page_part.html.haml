@@ -5,4 +5,4 @@
     %p
       = render_region :part_controls, :locals => {:page_part => page_part}
     %div
-      = text_field_tag 'page[parts][][content]', page_part.content, :style => "width:2em;", id => "part_#{page_part.name.to_slug}_content"
+      = text_field_tag 'page[parts][][content]', page_part.content, :style => "width:2em;", :id => "part_#{page_part.name.to_slug}_content"
