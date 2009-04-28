@@ -1,0 +1,16 @@
+.page{:id => "page-#{page_part.name.to_slug}"}
+  .part{:id => "part-#{page_part.name.to_slug}"}
+    = hidden_field_tag 'page[parts][][name]', page_part.name, :id => "part_#{page_part.name.to_slug}_name"
+    = hidden_field_tag 'page[parts][][page_part_type]', 'StringPagePart', :id => "part_#{page_part.name.to_slug}_page_part_type"
+    %p
+      %label{:for => "part_#{page_part.name.to_slug}_filter_id"} Filter
+      = select_tag 'page[parts][][filter_id]', filter_options_for_select(page_part.filter_id), :id => "part_#{page_part.name.to_slug}_filter_id"
+      %span#reference-links
+        Reference:
+        %span{:id => "filter-reference-link-#{page_part.name.to_slug}"}
+          = link_to_function "Filter", "load_filter_reference('#{page_part.name.to_slug}');"
+        %span{:id => "tag-reference-link-#{page_part.name.to_slug}"}
+          = link_to_function 'Available Tags', "load_tag_reference('#{page_part.name.to_slug}');"
+      = render_region :part_controls, :locals => {:page_part => page_part}
+    %div
+      = text_field_tag 'page[parts][][content]', h(page_part.content), :class => "textbox string-page-part", :maxlength => 255, :id => "part_#{page_part.name.to_slug}_content"

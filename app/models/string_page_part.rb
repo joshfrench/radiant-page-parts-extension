@@ -1,0 +1,2 @@
+class StringPagePart < PagePart
+end
