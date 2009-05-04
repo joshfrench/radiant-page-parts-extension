@@ -48,7 +48,7 @@ module PageParts
 
         # For pretty listings
         def display_name
-          self.name.titleize
+          'PagePart' == self.name ? 'Text' : self.name.gsub('PagePart','').titleize
         end
 
         # Filename of edit partial
