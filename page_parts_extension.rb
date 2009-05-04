@@ -14,7 +14,7 @@ class PagePartsExtension < Radiant::Extension
     if defined? ContentTypesExtension
       admin.content_types.edit.add :parts_head, 'admin/content_types/parts_head_type', :after => 'name'
       admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'name'
-      admin.content_types.edit.add :popup, 'admin/content_types/type_select', :after => 'name_field' 
+      admin.content_types.edit.add :popup, 'admin/content_types/type_select', :after => 'description_field'
     end
   end
   
