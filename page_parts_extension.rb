@@ -9,7 +9,13 @@ class PagePartsExtension < Radiant::Extension
     PagePart.send(:include, PageParts::PagePartExtensions)
     Page.send(:include, PageParts::PageExtensions, PageParts::PagePartTags)
     Admin::PagesController.send(:include, PageParts::Admin::PagesControllerExtensions)
-    Dir.glob(File.join(PagePartsExtension.root, %w(app models *.rb))).each { |f| require_dependency f }
+
+    ([RADIANT_ROOT] + Radiant::Extension.descendants.map(&:root)).each do |path|
+      Dir["#{path}/app/models/*_page_part.rb"].each do |page_part|
+         $1.camelize.constantize if page_part =~ %r{/([^/]+)\.rb}
+      end
+    end
+
     require 'page_parts/standard_tags'
     if defined? ContentTypesExtension
       admin.content_types.edit.add :parts_head, 'admin/content_types/parts_head_type', :after => 'name'
