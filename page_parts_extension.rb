@@ -1,7 +1,7 @@
-require_dependency 'application'
+require_dependency 'application_controller'
 
 class PagePartsExtension < Radiant::Extension
-  version "0.1"
+  version "0.8.0"
   description "Adds rich content to page parts"
   url "http://digitalpulp.com"
   

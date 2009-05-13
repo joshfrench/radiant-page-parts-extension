@@ -56,6 +56,11 @@ module PageParts
           'PagePart' == name ? 'text_page_part' : name.gsub(' ', '').underscore
         end
 
+        # Possible ActiveRecord bug
+        def scoped_methods
+          Thread.current[:"#{self}_scoped_methods"] ||= (self.default_scoping || []).dup
+        end
+
       end
     end
 
