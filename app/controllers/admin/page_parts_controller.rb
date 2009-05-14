@@ -5,6 +5,6 @@ class Admin::PagePartsController < Admin::ResourceController
     @controller_name = 'page'
     @template_name = 'edit'
     render :partial => model.partial_name, :object => model,
-      :locals => {:index => params[:index].to_i, :page_part => model}
+      :locals => {:page_part_counter => params[:index].to_i, :page_part => model}
   end
 end
