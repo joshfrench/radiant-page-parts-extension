@@ -1,8 +1,10 @@
 .page{:id => "page-#{page_part.name.to_slug}"}
   .part{:id => "part-#{page_part.name.to_slug}"}
-    = hidden_field_tag 'page[parts][][name]', page_part.name, :id => "part_#{page_part.name.to_slug}_name"
-    = hidden_field_tag 'page[parts][][page_part_type]', 'StringPagePart', :id => "part_#{page_part.name.to_slug}_page_part_type"
-    = hidden_field_tag 'page[parts][][filter_id]', ''
+    = hidden_field_tag "page[parts_attributes][#{page_part_counter}][name]", page_part.name, :id => "part_#{page_part.name.to_slug}_name"
+    = hidden_field_tag "page[parts_attributes][#{page_part_counter}][id]", page_part.id, :id => "part_#{page_part_counter}_id", :class => "id_input"
+    = hidden_field_tag "page[parts_attributes][#{page_part_counter}][_delete]", false, :class => "delete_input"
+    = hidden_field_tag "page[parts_attributes][#{page_part_counter}][filter_id]", ''
+    = hidden_field_tag "page[parts_attributes][#{page_part_counter}][page_part_type]", 'StringPagePart', :id => "part_#{page_part.name.to_slug}_page_part_type"
     = render_region :part_controls, :locals => {:page_part => page_part}
     %div
-      = text_field_tag 'page[parts][][content]', h(page_part.content), :class => "textbox string-page-part", :maxlength => 255, :id => "part_#{page_part.name.to_slug}_content"
+      = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", h(page_part.content), :class => "textbox string-page-part", :maxlength => 255, :id => "part_#{page_part.name.to_slug}_content"
