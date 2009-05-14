@@ -1,14 +1,14 @@
 # Page Parts
 
 Content model enhancements for PageParts. Allows the storage of native DB
-types (boolean, integer, and datetime) in addition to the standard text 
+types (boolean, integer, string, and datetime) in addition to the standard text 
 content. Provides a foundation for creating richer content types through
 PagePart subclasses.
 
 ## Usage
 
-Install and run migrations. Now when adding a page part, you will be able to
-specify what type. Content will be stored as a native representation
+Install and run migrations. When adding new parts to pages, you will be asked
+which type of part to add. Content will be stored as a native representation
 (DatetimePagePart in a datetime column, &c.), allowing for advanced operations
 at the DB level. Further subclasses with custom behavior can be added easily.
 
@@ -41,7 +41,8 @@ There are two methods you should be aware of when creating new subclasses:
 #### content
 
 This class method specifies the storage to use for this class. Options are
-`:text`, `:integer`, `:boolean`, and `:datetime`. The default is `:text`.
+`:text`, `:integer`, `:boolean`, `:string`, and `:datetime`. The default 
+is `:text`.
 
     class IntegerPagePart < PagePart
       content :integer
