@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe PagePart do
   it "should initialize with text content" do
     part = PagePart.new(:content => 'sweet harmonious biscuits')
-    part.text_content.should eql('sweet harmonious biscuits')
+    part.content.should eql('sweet harmonious biscuits')
   end
 
   it "should alias text content" do
@@ -31,7 +31,7 @@ describe PagePart do
   describe ".content" do
     # Reset default for next test
     after do
-      PagePart.content = :text
+      PagePart.reset_column_information
     end
 
     it "should set storage column" do
@@ -40,7 +40,7 @@ describe PagePart do
     end
 
     it "should alias content attribute" do
-      part = PagePart.new(:text_content => "text", :integer_content => 123)
+      part = PagePart.new(:content => "text", :integer_content => 123)
       part.content.should eql('text')
       PagePart.content = :integer
       part.content.should eql(123)

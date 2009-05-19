@@ -4,8 +4,7 @@ module PageParts
       base.class_eval do
         set_inheritance_column :page_part_type
         class_inheritable_accessor :content_column
-        self.content_column = :text_content
-        alias_attribute :content, :text_content
+        self.content_column = :content
       end
 
       class << base
