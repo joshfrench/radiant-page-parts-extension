@@ -72,5 +72,10 @@ module PageParts
       content.to_s
     end
 
+    def attributes=(attributes)
+      attributes.stringify_keys!
+      attributes.delete('content') if attributes['content'].blank?
+      super
+    end
   end
 end
