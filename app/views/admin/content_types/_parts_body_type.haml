@@ -1,3 +1,3 @@
 %td.type
   = part.class.display_name
-  = hidden_field_tag 'content_type[parts][][page_part_type]', part.class.name
+  = hidden_field_tag "content_type[groups_attributes][#{content_group_counter}][parts_attributes][#{page_part_counter}][page_part_type]", part.class.name
