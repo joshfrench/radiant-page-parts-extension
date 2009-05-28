@@ -56,4 +56,12 @@ describe PagePart do
       BooleanPagePart.partial_name.should eql('boolean_page_part')
     end
   end
+
+  describe ".attributes=" do
+    it "should ignore empty content if storage column is passed" do
+      part = StringPagePart.new
+      part.attributes = { :string_content => 'sweet harmonious biscuits', :content => nil}
+      part.content.should eql('sweet harmonious biscuits')
+    end
+  end
 end
