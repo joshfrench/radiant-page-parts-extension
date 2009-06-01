@@ -1,1 +1,20 @@
-= render :partial => 'admin/page_parts/' + page_part.partial_name, :locals => { :page_part => page_part, :page_part_counter => page_part_counter }
+- count = PagePartsExtension.content_types_enabled? ? "#{@group_id}-#{page_part_counter}" : page_part_counter
+
+- standard_fields = capture do
+  = hidden_field_tag "page[parts_attributes][#{count}][name]", page_part.name, :id => "part_#{count}_name"
+  = hidden_field_tag "page[parts_attributes][#{count}][id]", page_part.id, :id => "part_#{count}_id", :class => "id_input"
+  = hidden_field_tag "page[parts_attributes][#{count}][_delete]", false, :class => "delete_input"
+  = hidden_field_tag "page[parts_attributes][#{count}][filter_id]", ''
+  = hidden_field_tag "page[parts_attributes][#{count}][page_part_type]", page_part.class.to_s
+  = render_region :part_controls, :locals => {:page_part => page_part}
+
+- if PagePartsExtension.content_types_enabled?
+  .grouped-part{:id => "part-#{page_part.name.to_slug}"}
+    %strong= page_part.name
+    = standard_fields
+    = render :partial => 'admin/page_parts/' + page_part.partial_name, :locals => { :page_part => page_part, :page_part_counter => count }
+- else
+  .page{:id => "page-#{page_part.name.to_slug}"}
+    .part{:id => "part-#{page_part.name.to_slug}"}
+      = standard_fields
+      = render :partial => 'admin/page_parts/' + page_part.partial_name, :locals => { :page_part => page_part, :page_part_counter => count }
