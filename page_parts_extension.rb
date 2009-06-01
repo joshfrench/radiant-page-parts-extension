@@ -17,7 +17,7 @@ class PagePartsExtension < Radiant::Extension
     end
 
     require 'page_parts/standard_tags'
-    if defined? ContentTypesExtension
+    if PagePartsExtension.content_types_enabled?
       admin.content_types.edit.add :parts_head, 'admin/content_types/parts_head_type', :after => 'name'
       admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'name'
       admin.content_types.edit.add :popup, 'admin/content_types/type_select', :after => 'description_field'
@@ -25,6 +25,10 @@ class PagePartsExtension < Radiant::Extension
   end
   
   def deactivate
+  end
+
+  def self.content_types_enabled?
+    !!defined?(ContentTypesExtension)
   end
   
 end
