@@ -1,4 +1,4 @@
-- count = PagePartsExtension.content_types_enabled? ? "#{@group_id}-#{page_part_counter}" : page_part_counter
+- count = PagePartsExtension.content_groups_enabled? ? "#{@group_id}-#{page_part_counter}" : page_part_counter
 
 - standard_fields = capture do
   = hidden_field_tag "page[parts_attributes][#{count}][name]", page_part.name, :id => "part_#{count}_name"
@@ -8,7 +8,7 @@
   = hidden_field_tag "page[parts_attributes][#{count}][page_part_type]", page_part.class.to_s
   = render_region :part_controls, :locals => {:page_part => page_part}
 
-- if PagePartsExtension.content_types_enabled?
+- if PagePartsExtension.content_groups_enabled?
   .grouped-part{:id => "part-#{page_part.name.to_slug}"}
     %strong= page_part.name
     = standard_fields

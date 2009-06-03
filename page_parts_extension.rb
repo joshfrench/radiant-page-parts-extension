@@ -30,5 +30,9 @@ class PagePartsExtension < Radiant::Extension
   def self.content_types_enabled?
     !!defined?(ContentTypesExtension)
   end
+
+  def self.content_groups_enabled?
+    false
+  end
   
 end
