@@ -22,6 +22,7 @@ class PagePartsExtension < Radiant::Extension
       admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'name'
       admin.content_types.edit.add :popup, 'admin/content_types/type_select', :after => 'description_field'
     end
+    
   end
   
   def deactivate
@@ -31,8 +32,4 @@ class PagePartsExtension < Radiant::Extension
     !!defined?(ContentTypesExtension)
   end
 
-  def self.content_groups_enabled?
-    false
-  end
-  
 end
