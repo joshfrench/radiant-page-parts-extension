@@ -1,4 +1,4 @@
-%label{ :for => :page_part_type } Class
+%label{ :for => :page_part_type } Type
 %br/
 = select_tag 'page_part[page_part_type]', options_from_collection_for_select([PagePart, *PagePart.descendants], :name, :display_name)
 %br/
