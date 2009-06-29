@@ -45,6 +45,11 @@ module PageParts
         end
         alias_method :content=, :content
 
+        # For listings
+        def visible?
+          self != PagePart
+        end
+
         # For pretty listings
         def display_name
           'PagePart' == self.name ? 'Text Area' : self.name.chomp('PagePart').titleize
