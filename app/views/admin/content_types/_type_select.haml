@@ -1,4 +1,4 @@
 %label{ :for => :page_part_type } Type
 %br/
-= select_tag 'page_part[page_part_type]', options_for_select([PagePart, *PagePart.descendants].sort{|x,y| x.display_name <=> y.display_name}.map{|x| [x.display_name, x.name]})
+= select_tag 'page_part[page_part_type]', options_for_select([PagePart, *PagePart.descendants].select{|x| x.visible?}.sort{|x,y| x.display_name <=> y.display_name}.map{|x| [x.display_name, x.name]})
 %br/
