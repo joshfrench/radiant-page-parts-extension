@@ -2,7 +2,7 @@ class StringPagePart < PagePart
   content :string
 
   def self.display_name
-    "Text Field"
+    "Text (Single Line)"
   end
 
 end
