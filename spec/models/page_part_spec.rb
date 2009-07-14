@@ -73,5 +73,11 @@ describe PagePart do
       part.attributes = { :string_content => 'sweet harmonious biscuits', :content => nil}
       part.content.should eql('sweet harmonious biscuits')
     end
+
+    it "should not ignore empty content if the native storage column is passed" do
+      part = PagePart.new
+      part.attributes = { :content => '' }
+      part.content.should eql('')
+    end
   end
 end
