@@ -79,7 +79,7 @@ module PageParts
 
     def attributes=(attributes)
       attributes.stringify_keys!
-      attributes.delete('content') if attributes['content'].blank?
+      attributes.delete('content') if attributes['content'].blank? && !self.content_column.nil?
       super
     end
   end
