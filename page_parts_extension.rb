@@ -18,8 +18,8 @@ class PagePartsExtension < Radiant::Extension
 
     require 'page_parts/standard_tags'
     if PagePartsExtension.content_types_enabled?
-      admin.content_types.edit.add :parts_head, 'admin/content_types/parts_head_type', :after => 'name'
-      admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'name'
+      admin.content_types.edit.add :parts_head, 'admin/content_types/parts_head_type', :after => 'description'
+      admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'description'
       admin.content_types.edit.add :content_type_add_part_popup, 'admin/content_types/type_select', :after => 'description_field'
     end
 
