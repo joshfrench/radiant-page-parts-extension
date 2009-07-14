@@ -30,6 +30,6 @@ module StandardTags
     else
       page.published_at || page.created_at
     end
-    adjust_time(date).strftime(format)
+    date.strftime(format)
   end
 end
