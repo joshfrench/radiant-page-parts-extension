@@ -3,9 +3,10 @@ module PagePartsHelper
 
     # PRE 0.8.0 DP STYLING :
     if config['defaults.page_part_editing_style'] == 'list'
-      name = content_tag(:strong, part.name)
-      content_tag(:div, [name,fields].join, :class => 'listed-part', :id => "page-#{part.name.to_slug}")
       @stylesheets << 'admin/page_parts'
+
+      name = content_tag(:div, content_tag(:label, part.name, :for => "part_#{part.name.to_slug}_content"), :class => 'page-part-name')
+      content_tag(:div, [name,fields].join, :class => 'page-part Field', :id => "page-#{part.name.to_slug}")
 
     # STOCK RADIANT PAGE PART RENDERING :
     else
