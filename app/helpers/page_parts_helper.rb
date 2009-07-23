@@ -3,7 +3,6 @@ module PagePartsHelper
 
     # PRE 0.8.0 DP STYLING :
     if config['defaults.page_part_editing_style'] == 'list'
-      @stylesheets << 'admin/list_view'
       name = content_tag(:strong, part.name)
       content_tag(:div, [name,fields].join, :class => 'listed-part', :id => "page-#{part.name.to_slug}")
 
