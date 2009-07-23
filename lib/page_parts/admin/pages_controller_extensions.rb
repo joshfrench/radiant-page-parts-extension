@@ -12,7 +12,7 @@ module PageParts
         @javascripts << 'prototype_extensions'
         @javascripts << 'lowpro'
         @javascripts << 'admin/DatePicker'
-        @stylesheets << 'admin/page_parts'
+        @stylesheets << 'admin/date_picker'
       end
       
     end
