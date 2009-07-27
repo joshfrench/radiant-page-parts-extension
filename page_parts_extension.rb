@@ -22,9 +22,6 @@ class PagePartsExtension < Radiant::Extension
       admin.content_types.edit.add :parts_body, 'admin/content_types/parts_body_type', :after => 'description'
       admin.content_types.edit.add :content_type_add_part_popup, 'admin/content_types/type_select', :after => 'description_field'
     end
-
-    Radiant::Config['defaults.page_part_editing_style'] = 'stock'
-    
   end
   
   def deactivate
