@@ -1,6 +1,6 @@
 module PagePartsHelper
   def render_part(part,fields)
-    inner = content_tag(:div, fields, :class => 'part', :id => "part-#{part.name.to_slug}")
-    content_tag(:div, inner, :class => 'page', :id => "page-#{part.name.to_slug}")
+    name = content_tag(:div, content_tag(:label, part.name, :for => "part_#{part.name.to_slug}_content"), :class => 'page-part-name')
+    content_tag(:div, [name,fields].join, :class => 'page-part Field', :id => "page-#{part.name.to_slug}")
   end
 end
