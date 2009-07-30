@@ -2,6 +2,6 @@ class SerializedPagePart < PagePart
   serialize :content
   
   def self.display_name
-    "Hash Table"
+    "Serialized Data"
   end
 end
