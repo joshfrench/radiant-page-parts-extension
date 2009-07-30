@@ -32,4 +32,54 @@ module StandardTags
     end
     date.strftime(format)
   end
+  
+  tag 'table' do |tag|
+    raise TagError, "Missing required attribute `part_name`" unless tag.attr['part_name']
+    tag.locals.table = tag.locals.page.part(tag.attr['part_name']).content
+  end
+  
+  tag 'table:head' do |tag|
+    tag.locals.head = tag.locals.table.first.keys
+  end
+
+  tag 'table:head:each' do |tag|
+    returning [] do |result|
+      tag.locals.head.each do |head|
+        tag.locals.header = head
+        result << tag.expand
+      end
+    end
+  end
+
+  tag 'table:head:each:title' do |tag|
+    tag.locals.header.to_s.titleize
+  end
+
+  tag 'table:rows' do |tag|
+    tag.locals.table
+  end
+
+  tag 'table:rows:each' do |tag|
+    returning [] do |result|
+      tag.locals.table.each do |row|
+        tag.locals.row = row
+        result << tag.expand
+      end
+    end
+  end
+
+  tag 'table:rows:each:value' do |tag|
+    tag.locals.row[tag.attr['key']]
+  end
+
+  tag 'table:columns' do |tag|
+    columns = {}
+    tag.locals.table.map{|x| x.values}.transpose.each_with_index{|x,i| columns[tag.locals.table.first.keys[i]] = x }
+    tag.locals.columns = columns
+  end
+
+  tag 'table:columns:values' do |tag|
+    tag.locals.columns[tag.attr['key']]
+  end
+
 end
