@@ -1,2 +1,2 @@
-%div
+%div{ :id => "page-#{page_part.name.to_slug}", :class => "#{'page' if request.xhr?} page-part Field", "data-caption" => page_part.name.to_slug }
   = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", h(page_part.content), :class => "textbox string-page-part", :maxlength => 255, :id => "part_#{page_part.name.to_slug}_content"

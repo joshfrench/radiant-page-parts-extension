@@ -1,3 +1,3 @@
-%div
+%div{ :id => "page-#{page_part.name.to_slug}", :class => "#{'page' if request.xhr?} page-part Field", "data-caption" => page_part.name.to_slug }
   = hidden_field_tag "page[parts_attributes][#{page_part_counter}][content]", false
   = check_box_tag "page[parts_attributes][#{page_part_counter}][content]", true, page_part.content?, :class => "checkbox", :id => "part_#{page_part.name.to_slug}_content"
