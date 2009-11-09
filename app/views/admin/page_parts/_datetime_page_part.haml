@@ -1,2 +1,2 @@
-%div{ :id => "page-#{page_part.name.to_slug}", :class => "#{'page' if request.xhr?} page-part Field", "data-caption" => page_part.name.to_slug }
+%div{ :id => "page-#{page_part.name.to_slug}", :class => "page-part Field", "data-caption" => page_part.name.to_slug }
   = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", page_part.content, :id => "part_#{page_part.name.to_slug}_content", :class => 'DatePicker'
