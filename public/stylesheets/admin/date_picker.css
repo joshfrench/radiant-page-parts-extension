@@ -1,4 +1,4 @@
-.CalendarWidget { position: absolute; width: 13.5em; padding: 8px; background: #FFF; border: 1px solid #CCC; border-width: 1px 2px 2px 1px; line-height: 1; font-family: helvetica, arial, sans-serif; font-size: 13px; }
+.CalendarWidget { position: absolute; width: 13.5em; padding: 8px; background: #FFF; border: 1px solid #CCC; border-width: 1px 2px 2px 1px; line-height: 1; font-family: helvetica, arial, sans-serif; font-size: 13px; color: #000; }
 .CalendarMonth { }
 
 .CalendarNav { height: 0; position: relative; }
@@ -9,7 +9,7 @@
 .CalendarNavNextYear { display: none; }
 
 .CalendarTable { border-collapse: collapse; width: 100%; }
-.CalendarTable CAPTION { margin: 0; padding: 0 0 .5em; }
+.CalendarTable CAPTION { margin: 0; padding: 0 0 .5em; text-align: center; }
 .CalendarTable THEAD TH,
 .CalendarTable TBODY TD { text-align: center; border: 1px solid #CCC; padding: .2em 0 0 !important; }
 .CalendarTable THEAD TH { font-weight: bold; text-align: center !important; }
