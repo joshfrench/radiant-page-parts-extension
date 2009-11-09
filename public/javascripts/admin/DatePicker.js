@@ -1,3 +1,22 @@
+// Define base PageWidget class, unless already defined
+
+if (typeof PageWidget === "undefined") {
+	
+	var PageWidget = Class.create({
+		node : null,
+		// basic, useless initialize method
+		initialize : function(id, options) {
+			this.node = $(id);
+			this.setOptions(options);
+		},
+		setOptions : function(config) {
+			config = config || {};
+			this.CONFIG = (this.CONFIG == undefined) ? Object.extend(Object.clone(this.constructor.CONFIG), config) : Object.extend(this.CONFIG, config);
+		}
+	});
+	PageWidget.CONFIG = { };
+}
+
 // add new methods to Date.prototype
 (function(){
 
@@ -690,7 +709,6 @@ var DatePicker = Behavior.create(PageWidget, {
 
 //		this.nodes['widget'].clonePosition(this.node, position);
 //		Position.clone(this.node, this.nodes['widget'], position);
-
 		this.nodes['widget'].setStyle(position);
 
 	},

@@ -9,8 +9,6 @@ module PageParts
       end
     
       def add_js_and_css
-        @javascripts << 'prototype_extensions'
-        @javascripts << 'lowpro'
         @javascripts << 'admin/DatePicker'
         @stylesheets << 'admin/date_picker'
       end
