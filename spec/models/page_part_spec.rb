@@ -47,16 +47,6 @@ describe PagePart do
     end
   end
 
-  describe "#visible?" do
-    it "should be false if page part is not subclassed" do
-      PagePart.visible?.should eql(false)
-    end
-
-    it "should be true if page part is subclassed" do
-      BooleanPagePart.visible?.should eql(true)
-    end
-  end
-
   describe ".partial_name" do
     it "should be text if page part is not subclassed" do
       PagePart.partial_name.should eql('text_page_part')

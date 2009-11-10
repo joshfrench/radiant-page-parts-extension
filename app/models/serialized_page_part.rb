@@ -4,4 +4,5 @@ class SerializedPagePart < PagePart
   def self.display_name
     "Serialized Data"
   end
+
 end
