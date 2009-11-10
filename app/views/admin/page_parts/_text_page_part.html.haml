@@ -1,2 +1,2 @@
 %div{ :id => "page-#{page_part.name.to_slug}", :class => "page-part Field", "data-caption" => page_part.name.to_slug }
-  ~ text_area_tag "page[parts_attributes][#{page_part_counter}][content]", h(page_part.content), :size => '80x8', :class => "textarea TextAreaInput", :id => "part_#{page_part.name.to_slug}_content"
+  = text_area_tag "page[parts_attributes][#{page_part_counter}][content]", h(page_part.content), :size => '80x8', :class => "textarea TextAreaInput", :id => "part_#{page_part.name.to_slug}_content"

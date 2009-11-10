@@ -4,7 +4,6 @@ module PageParts
       def self.included(base)
         base.class_eval do
           before_filter :add_js_and_css, :only => [:new, :edit, :create, :update]
-          helper :page_parts
         end
       end
     

@@ -23,13 +23,6 @@ class PagePartsExtension < Radiant::Extension
       admin.content_types.edit.add :content_type_add_part_popup, 'admin/content_types/type_select', :after => 'description_field'
     end
     
-    Radiant::AdminUI.class_eval { attr_accessor :page_parts }
-    admin.page_parts = returning OpenStruct.new do |page_parts|
-      page_parts.new = Radiant::AdminUI::RegionSet.new do |edit|
-        edit.page_controls.concat %w{part_controls}
-      end
-    end
-    
   end
   
   def deactivate
