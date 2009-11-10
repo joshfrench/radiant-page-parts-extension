@@ -13,8 +13,8 @@ module PageParts
         # _not_ a PagePart or PagePart descendant, returned object will be a normal
         # PagePart. If class name is not a valid constant, throws an exception.
         def new(attributes={})
-          attributes = HashWithIndifferentAccess.new(attributes)
-          if klass_name = attributes.delete(:page_part_type) and (klass = klass_name.constantize) < PagePart
+          attributes.stringify_keys!
+          if klass_name = attributes.delete('page_part_type') and (klass = klass_name.constantize) < PagePart
             klass.new(attributes)
           else
             super
