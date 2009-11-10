@@ -4,7 +4,7 @@
   = hidden_field_tag "page[parts_attributes][#{page_part_counter}][_delete]", false, :class => "delete_input"
   = hidden_field_tag "page[parts_attributes][#{page_part_counter}][filter_id]", ''
   = hidden_field_tag "page[parts_attributes][#{page_part_counter}][page_part_type]", page_part.class.to_s
-  -# = render_region :part_controls, :locals => {:page_part => page_part, :page_part_counter => page_part_counter}
+  = render_region :part_controls, :locals => {:page_part => page_part, :page_part_counter => page_part_counter}
   = render :partial => 'admin/page_parts/' + page_part.partial_name, :locals => { :page_part => page_part, :page_part_counter => page_part_counter }
 
 = render_part(page_part,part_fields)
