@@ -1,0 +1,4 @@
+- options_for = ['created_at', 'updated_at', 'published_at', 'now']
+%div.row
+  =text_field_tag "page[parts_attributes][#{page_part_counter}][content][date_format]", page_part.date_format, :id => "part_#{page_part.name.to_slug}_content-format"
+  =select_tag "page[parts_attributes][#{page_part_counter}][content][for_date]", options_for_select(options_for, page_part.for_date), :id => "part_#{page_part.name.to_slug}_content-for"
