@@ -12,4 +12,7 @@ class SerializedPagePart < PagePart
     "Serialized Data"
   end
 
+  def after_initialize
+    self.content ||= {}
+  end
 end
