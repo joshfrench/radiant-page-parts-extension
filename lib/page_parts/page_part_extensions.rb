@@ -5,6 +5,7 @@ module PageParts
         set_inheritance_column :page_part_type
         class_inheritable_accessor :content_column
         self.content_column = :content
+        delegate :display_name, :to => base
       end
 
       class << base
@@ -45,9 +46,11 @@ module PageParts
         end
         alias_method :content=, :content
 
-        # For pretty listings
-        def display_name
-          'PagePart' == self.name ? 'Text Area' : self.name.chomp('PagePart').titleize
+        # For prettier part-type selection, override the default name 
+        # assignment. See Datetime or String parts for examples.
+        def display_name(name = nil)
+          @display_name ||= self.name.chomp('PagePart').titleize
+          name ? @display_name = name : @display_name
         end
 
         # Filename of edit partial

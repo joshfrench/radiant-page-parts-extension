@@ -56,3 +56,15 @@ describe DatetimePagePart do
     casted.content.should eql(t.to_s)
   end
 end
+
+describe SubclassPagePart = Class.new(PagePart) do
+  describe ".display_name" do
+    it "should be humanized classname" do
+      SubclassPagePart.display_name.should eql('Subclass')
+    end
+    it "should be overridden with .display_name" do
+      SubclassPagePart.display_name "A nice name"
+      SubclassPagePart.display_name.should eql('A nice name')
+    end
+  end
+end

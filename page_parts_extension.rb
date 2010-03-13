@@ -7,6 +7,7 @@ class PagePartsExtension < Radiant::Extension
   
   def activate
     PagePart.send(:include, PageParts::PagePartExtensions)
+    PagePart.display_name 'Text Area'
     Page.send(:include, PageParts::PageExtensions, PageParts::PagePartTags)
     Admin::PagesController.send(:include, PageParts::Admin::PagesControllerExtensions)
 
