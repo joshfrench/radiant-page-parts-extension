@@ -6,7 +6,7 @@
 class RadiusTagPagePart < PagePart
   serialize :content
 
-  def content_for_render
+  def render_content
     "<r:date for='#{for_date}' format='#{date_format}' />"
   end
 

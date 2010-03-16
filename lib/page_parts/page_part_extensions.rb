@@ -24,12 +24,12 @@ module PageParts
 
         # For front-end transparency, @subclassed_page_part.becomes(PagePart)
         # will cast up to the base class and translate any native content to
-        # a string using the content_for_render method.
+        # a string using the render_content method.
         def inherited(subclass)
           subclass.class_eval do
             def becomes(superclass)
               object = super
-              object.content = content_for_render if object.respond_to?(:content=)
+              object.content = render_content if object.respond_to?(:content=)
               object
             end
           end
@@ -71,7 +71,7 @@ module PageParts
     end
 
     # Override this to set up custom rendering
-    def content_for_render
+    def render_content
       content.to_s
     end
 

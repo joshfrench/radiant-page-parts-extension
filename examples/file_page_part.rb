@@ -9,7 +9,7 @@ class FilePagePart < PagePart
     self.document.clear if delete
   end
 
-  def content_for_render
+  def render_content
     self.document.url
   end
 end
