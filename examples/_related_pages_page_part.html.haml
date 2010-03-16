@@ -1,2 +1,7 @@
+-# Instead of populating this field with the content of the page part, we get
+-# the association IDs directly from the page itself (with some safety for new
+-# records.) In this simple example it's possible for the values stored in the
+-# page part to be stale, so we always display the data from the real source.
+
 %div.row
-  = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", page_part.content
+  = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", page_part.page.try(:related_page_ids).try(:join, ',')
