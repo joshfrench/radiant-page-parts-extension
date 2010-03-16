@@ -1,0 +1,6 @@
+.row
+  %label{:for => "page[favorite_book_attributes][title]"} Title:
+  = text_field_tag "page[favorite_book_attributes][title]", page_part.page.try(:favorite_book).try(:title)
+  %br/
+  %label{:for => "page[favorite_book_attributes][isbn]"} ISBN:
+  = text_field_tag "page[favorite_book_attributes][isbn]", page_part.page.try(:favorite_book).try(:isbn)
