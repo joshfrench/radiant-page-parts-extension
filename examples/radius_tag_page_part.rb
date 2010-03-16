@@ -3,7 +3,7 @@
 # form interface. This Part will render the r:date tag with the format and
 # attribute you specify.
 
-class TagPagePart < PagePart
+class RadiusTagPagePart < PagePart
   serialize :content
 
   def content_for_render

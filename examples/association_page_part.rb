@@ -19,7 +19,9 @@
 # A complete implementation would provide a better user experience in the form
 # of some sort of page-selection interface.
 
-class RelatedPagesPagePart < PagePart
+class AssociationPagePart < PagePart
+  display_name "Related Pages"
+
   def before_save
     self.page.related_page_ids = content.split(',')
   end
