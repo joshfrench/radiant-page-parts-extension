@@ -3,5 +3,5 @@
 -# records.) In this simple example it's possible for the values stored in the
 -# page part to be stale, so we always display the data from the real source.
 
-%div.row
-  = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", page_part.page.try(:related_page_ids).try(:join, ',')
+.row
+  = text_field_tag "page[parts_attributes][#{page_part_counter}][content]", @page.try(:related_page_ids).try(:join, ',')

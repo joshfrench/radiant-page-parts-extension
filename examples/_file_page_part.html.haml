@@ -2,8 +2,8 @@
 -# current file rather than simply the filename.
 
 - if page_part.document.file?
-	%div.row
+	.row
 		== Delete #{page_part.document.original_filename}?
 		= check_box_tag "page[parts_attributes][#{page_part_counter}][delete]", :value => true
-%div.row
+.row
 	= file_field_tag "page[parts_attributes][#{page_part_counter}][document]", :value => page_part.document.original_filename
