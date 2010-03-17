@@ -49,13 +49,13 @@ column.
       content :integer
     end
   
-#### #content_for_render
+#### #render_content
  
 By default, all PagePart subclasses simply return `content.to_s` when asked to
 render. Override this method to return something else.
 
     class ReversedPagePart < PagePart
-      def content_for_render
+      def render_content
         content.reverse
       end
     end
