@@ -57,7 +57,7 @@ describe DatetimePagePart do
   end
 end
 
-describe SubclassPagePart = Class.new(PagePart) do
+describe (class SubclassPagePart < PagePart ; end) do
   describe ".display_name" do
     it "should be humanized classname" do
       SubclassPagePart.display_name.should eql('Subclass')

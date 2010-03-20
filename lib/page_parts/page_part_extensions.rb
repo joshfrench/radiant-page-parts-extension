@@ -5,7 +5,9 @@ module PageParts
         set_inheritance_column :page_part_type
         class_inheritable_accessor :content_column
         self.content_column = :content
-        delegate :display_name, :to => base
+        include Annotatable
+        annotate :display_name
+        display_name 'Text Area'
       end
 
       class << base
@@ -26,6 +28,7 @@ module PageParts
         # will cast up to the base class and translate any native content to
         # a string using the render_content method.
         def inherited(subclass)
+          subclass.display_name = subclass.name.to_name('Page Part')
           subclass.class_eval do
             def becomes(superclass)
               object = super
@@ -45,13 +48,6 @@ module PageParts
           alias_attribute :content, self.content_column
         end
         alias_method :content=, :content
-
-        # For prettier part-type selection, override the default name 
-        # assignment. See Datetime or String parts for examples.
-        def display_name(name = nil)
-          @display_name ||= self.name.to_name('Page Part')
-          name ? @display_name = name : @display_name
-        end
 
         # Filename of edit partial
         def partial_name
