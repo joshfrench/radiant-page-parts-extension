@@ -49,7 +49,7 @@ module PageParts
         # For prettier part-type selection, override the default name 
         # assignment. See Datetime or String parts for examples.
         def display_name(name = nil)
-          @display_name ||= self.name.chomp('PagePart').titleize
+          @display_name ||= self.name.to_name('Page Part')
           name ? @display_name = name : @display_name
         end
 
