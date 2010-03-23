@@ -10,7 +10,7 @@
       %p
         %label{:for => 'page_part_page_part_type'} Part Type
         %select{:id => 'page_part_page_part_type', :name => 'page_part[page_part_type]'}
-          = options_for_select [PagePart, *PagePart.descendants].sort{|x,y| x.display_name <=> y.display_name}.map{|x| [x.display_name, x.name]}
+          = options_for_select [PagePart, *PagePart.descendants].sort{|x,y| x.part_name <=> y.part_name}.map{|x| [x.part_name, x.name]}
       %p.buttons
         = submit_tag "Add Part", :id => 'add_part_button', :class => "button"
         or

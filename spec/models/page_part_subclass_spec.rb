@@ -58,13 +58,13 @@ describe DatetimePagePart do
 end
 
 describe (class SubclassPagePart < PagePart ; end) do
-  describe ".display_name" do
+  describe ".part_name" do
     it "should be humanized classname" do
-      SubclassPagePart.display_name.should eql('Subclass')
+      SubclassPagePart.part_name.should eql('Subclass')
     end
-    it "should be overridden with .display_name" do
-      SubclassPagePart.display_name "A nice name"
-      SubclassPagePart.display_name.should eql('A nice name')
+    it "should be overridden with .part_name" do
+      SubclassPagePart.part_name "A nice name"
+      SubclassPagePart.part_name.should eql('A nice name')
     end
   end
 end

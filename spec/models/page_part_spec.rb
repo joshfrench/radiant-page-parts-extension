@@ -71,9 +71,9 @@ describe PagePart do
     end
   end
 
-  describe ".display_name" do
+  describe ".part_name" do
     it "should be 'Text Area'" do
-      PagePart.display_name.should eql('Text Area')
+      PagePart.part_name.should eql('Text Area')
     end
   end
 end

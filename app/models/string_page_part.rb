@@ -1,5 +1,5 @@
 class StringPagePart < PagePart
   content :string
-  display_name "Text (Single Line)"
+  part_name "Text (Single Line)"
 
 end

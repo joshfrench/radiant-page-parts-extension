@@ -6,8 +6,8 @@ module PageParts
         class_inheritable_accessor :content_column
         self.content_column = :content
         include Annotatable
-        annotate :display_name
-        display_name 'Text Area'
+        annotate :part_name
+        part_name 'Text Area'
       end
 
       class << base
@@ -28,7 +28,7 @@ module PageParts
         # will cast up to the base class and translate any native content to
         # a string using the render_content method.
         def inherited(subclass)
-          subclass.display_name = subclass.name.to_name('Page Part')
+          subclass.part_name = subclass.name.to_name('Page Part')
           subclass.class_eval do
             def becomes(superclass)
               object = super

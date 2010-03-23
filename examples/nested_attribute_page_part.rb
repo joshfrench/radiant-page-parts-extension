@@ -16,5 +16,5 @@
 # `favorite_book` association. See the example partial for implementation.
 
 class NestedAttributePagePart < PagePart
-  display_name "Favorite Book"
+  part_name "Favorite Book"
 end

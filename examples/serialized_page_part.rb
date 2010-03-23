@@ -8,7 +8,7 @@ class SerializedPagePart < PagePart
     %w(Red Blue Green Cyan Magenta Yellow)
   end
 
-  def self.display_name
+  def self.part_name
     "Serialized Data"
   end
 
