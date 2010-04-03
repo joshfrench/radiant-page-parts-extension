@@ -29,6 +29,7 @@ module PageParts
         # a string using the render_content method.
         def inherited(subclass)
           subclass.part_name = subclass.name.to_name('Page Part')
+          subclass.show_filters self.show_filters
           subclass.class_eval do
             def becomes(superclass)
               object = super
@@ -59,6 +60,10 @@ module PageParts
           Thread.current[:"#{self}_scoped_methods"] ||= (self.default_scoping || []).dup
         end
 
+        def show_filters(show=nil)
+          @show_filters = true unless instance_variable_defined? :@show_filters
+          show.nil? ? @show_filters : @show_filters = show
+        end
       end
     end
 
@@ -75,6 +80,10 @@ module PageParts
       attributes.stringify_keys!
       attributes.delete('content') if attributes['content'].blank? && (!content_column.eql?(:content) ^ content_column.nil?)
       super
+    end
+
+    def show_filters?
+      self.class.show_filters
     end
   end
 end

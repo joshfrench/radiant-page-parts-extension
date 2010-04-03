@@ -76,4 +76,12 @@ describe PagePart do
       PagePart.part_name.should eql('Text Area')
     end
   end
+
+  it "should show/hide filter bar" do
+    part = PagePart.new
+    part.show_filters?.should be_true
+
+    PagePart.show_filters false
+    part.show_filters?.should be_false
+  end
 end

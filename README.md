@@ -46,7 +46,12 @@ And you can tell the part how to render its content with the `PagePart#render_co
 
 `PagePart#render_content` is useful if you need to interpret the part's value before outputting it with a tag like `<r:content>`.
 
-Each type of page part needs its own subclass and a partial view. The partial is used to render the part's form element when editing a page.
+Each type of page part needs its own subclass and a partial view. The partial is used to render the part's form element when editing a page. If a part doesn't need to display the filter list and reference (i.e. it's not text) you can turn off the filter and reference display:
+
+    class NumericPagePart < PagePart
+      content :integer
+      show_filters false
+    end
 
 See this extension's `/app/models` and `/app/views/admin/page_parts` directories for examples of basic part & view definitions. Any parts you create should go in your own extension's `/app/models` and `/app/views/admin/page_parts` directories.
 
