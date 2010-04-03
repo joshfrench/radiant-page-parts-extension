@@ -36,22 +36,22 @@ describe IntegerPagePart do
   end
 end
 
-describe DatetimePagePart do
+describe DatePagePart do
   it "should initialize with datetime" do
     t = Time.now
-    part = DatetimePagePart.new(:content => t)
+    part = DatePagePart.new(:content => t)
     part.datetime_content.should eql(t)
   end
 
   it "should alias datetime content" do
     t = Time.now
-    part = DatetimePagePart.new(:content => t)
+    part = DatePagePart.new(:content => t)
     part.content.should eql(t)
   end
 
   it "should translate content when upcast" do
     t = Time.now
-    part = DatetimePagePart.new(:content => t)
+    part = DatePagePart.new(:content => t)
     casted = part.becomes(PagePart)
     casted.content.should eql(t.to_s)
   end

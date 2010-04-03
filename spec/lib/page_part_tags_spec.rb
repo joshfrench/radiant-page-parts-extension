@@ -32,7 +32,7 @@ describe PageParts::PagePartTags do
   
   describe "if_earlier" do
     before do
-      @date = DatetimePagePart.new(:name => 'date', :content => Time.now - 1.hour)
+      @date = DatePagePart.new(:name => 'date', :content => Time.now - 1.hour)
       @page.parts << @date
     end
 
@@ -88,7 +88,7 @@ describe PageParts::PagePartTags do
   
   describe "date" do
     before do
-      @date = DatetimePagePart.new(:name => 'millenium', :content => '1/1/2000')
+      @date = DatePagePart.new(:name => 'millenium', :content => '1/1/2000')
       @page.parts << @date
     end
 

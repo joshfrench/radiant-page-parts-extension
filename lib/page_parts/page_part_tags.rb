@@ -32,7 +32,7 @@ module PageParts
     end
     
     desc %{
-      Given the name of a datetime page part, expands if that part's value is earlier 
+      Given the name of a date page part, expands if that part's value is earlier
       than @Time.now@. Accepts an optional @than@ parameter if you need to compare the
       value to something other than @Time.now@. @than@ can be any string parseable by DateTime.
       
@@ -44,7 +44,7 @@ module PageParts
       page = tag.locals.page
       comparison = tag.attr['than'] ? DateTime.parse(tag.attr['than']) : DateTime.now
       part = page.part(tag.attr['part'])
-      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not a DatetimePagePart") unless part.is_a?(DatetimePagePart)
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not a DatePagePart") unless part.is_a?(DatePagePart)
       tag.expand if part.content < comparison
     end
     
@@ -61,7 +61,7 @@ module PageParts
       page = tag.locals.page
       comparison = tag.attr['than'] ? DateTime.parse(tag.attr['than']) : DateTime.now
       part = page.part(tag.attr['part'])
-      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not a DatetimePagePart") unless part.is_a?(DatetimePagePart)
+      raise StandardTags::TagError.new("`#{tag.attr['part']}' is not a DatetimePagePart") unless part.is_a?(DatePagePart)
       tag.expand if part.content > comparison
     end
     
