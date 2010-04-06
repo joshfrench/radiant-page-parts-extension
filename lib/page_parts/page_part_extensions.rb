@@ -55,7 +55,12 @@ module PageParts
           'PagePart' == name ? 'text_page_part' : name.gsub(' ', '').underscore
         end
 
-        # Possible ActiveRecord bug
+        # Workaround for ActiveRecord bug,
+        # see https://rails.lighthouseapp.com/projects/8994/tickets/1339
+        # For development & testing you may also need to change config/environment.rb from:
+        #     config.time_zone = 'UTC'
+        # to:
+        #     config.active_record.default_timezone = :utc
         def scoped_methods
           Thread.current[:"#{self}_scoped_methods"] ||= (self.default_scoping || []).dup
         end
