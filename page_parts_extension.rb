@@ -8,7 +8,6 @@ class PagePartsExtension < Radiant::Extension
   def activate
     PagePart.send(:include, PageParts::PagePartExtensions)
     Page.send(:include, PageParts::PageExtensions, PageParts::PagePartTags)
-    Admin::PagesController.send(:include, PageParts::Admin::PagesControllerExtensions)
 
     ([RADIANT_ROOT] + Radiant::Extension.descendants.map(&:root)).each do |path|
       Dir["#{path}/app/models/*_page_part.rb"].each do |page_part|
