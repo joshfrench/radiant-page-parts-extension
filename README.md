@@ -53,7 +53,9 @@ Each type of page part needs its own subclass and a partial view. The partial is
       show_filters false
     end
 
-See this extension's `/app/models` and `/app/views/admin/page_parts` directories for examples of basic part & view definitions. Any parts you create should go in your own extension's `/app/models` and `/app/views/admin/page_parts` directories.
+See this extension's `/app/models` and `/app/views/admin/page_parts` directories for examples of basic part & view definitions.
+
+If your parts are part of an extension, the parts can be stored in `app/models` and the view partials in `app/views/admin/page_parts`. If you don't want to create an extension just to hold some custom parts, you can put the parts in `RAILS_ROOT/app/models` and the view partials in `RAILS_ROOT/app/views/admin/page_parts`.
 
 ## Advanced Usage
 
